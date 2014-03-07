@@ -685,7 +685,7 @@ module Wice
       else
         parameters << ["#{grid.name}[pp]", collection_total_entries]
 
-        "#{first}-#{last} / #{collection_total_entries} " +
+        "#{I18n.t(:showed, scoped: [:wice_grid])}#{first}-#{last} #{I18n.t(:of, scoped: [:wice_grid])} #{collection_total_entries} " +
           if (! allow_showing_all_records) || collection_total_entries <= collection.length
             ''
           else
