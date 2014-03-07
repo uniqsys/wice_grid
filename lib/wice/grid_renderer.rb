@@ -118,11 +118,13 @@ module Wice
     end
 
     def per_page_panel
-      html = '<select class="custom-dropdown input-sm" id="grid_f_per_page" name="grid[f][per_page][]">'
+      html = '<span class="smart-form"><label class="select">'
+      html += '<select class="custom-dropdown input-sm" id="grid_f_per_page" name="grid[f][per_page][]">'
       5.times do |i|
-        html += '<option value="#{i}">#{i}</option>'
+        html += "<option value='#{i}'>#{i}</option>"
       end
-      html + '</select>'
+      html += '</select>'
+      html + '</label></span>'
     end
 
     # Takes one argument and adds the  <caption></caption> tag to the table with the argument value as

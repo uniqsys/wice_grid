@@ -61,9 +61,10 @@ class WiceGridProcessor
         if param && param != ''
           results.push(param)
     )
-    debugger
+
 
     res = @baseRequestForFilter
+
     if  results.length != 0
       allFilterParams = results.join('&')
       res = @appendToUrl(res, allFilterParams)
@@ -71,6 +72,8 @@ class WiceGridProcessor
     if domIdToFocus
       res = @appendToUrl(res, @parameterNameForFocus + domIdToFocus)
 
+    console.log(res)
+    console.log(results)
     res
 
 
