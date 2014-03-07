@@ -57,12 +57,13 @@ module Wice
         params_for_select = (params.is_a?(Hash) && params.empty?) ? [nil] : params
 
         '<div class="custom-dropdown-container smart-form">' +
-          '<div class="select">' +
+          '<label class="select">' +
             content_tag(:select,
               options_for_select(@custom_filter, params_for_select),
               select_options) +
             select_toggle.html_safe +
-          '</div>' +
+            '<i></i>' +
+          '</label>' +
         '</div>'.html_safe
       end
 
