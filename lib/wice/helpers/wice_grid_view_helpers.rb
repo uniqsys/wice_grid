@@ -296,10 +296,10 @@ module Wice
           direction = 'asc'
           link_style = nil
           if grid.ordered_by?(column)
-            column.add_css_class('sorted') #sorting_asc
+            column.add_css_class('sorted')
+            column.add_css_class("sorting_#{grid.order_direction}")
             link_style = grid.order_direction
             direction = 'desc' if grid.order_direction == 'asc'
-            column.add_css_class("sorting_#{direction}")
           end
 
           col_link = link_to(
