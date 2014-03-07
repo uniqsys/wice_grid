@@ -386,6 +386,11 @@ module Wice
           pagination_panel_content_html
         end
       end
+      per_page = '<select class="custom-dropdown input-sm auto-reload" id="grid_f_per_page" name="grid[f][per_page][]">' +
+        '<option value="1" selected="selected">1</option>' +
+        '<option value="2">2</option>' +
+        '<option value="3">3</option></select>'
+      grid.output_buffer << per_page
 
       grid.output_buffer << '</tfoot><tbody>'
 
