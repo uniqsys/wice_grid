@@ -97,24 +97,32 @@ module Wice
       )
     end
 
-    def pagination_panel(number_of_columns, hide_csv_button)  #:nodoc:
+    def pagination_panel_with_per_page(number_of_columns, hide_csv_button)  #:nodoc:
       panel = yield
 
       render_csv_button = @grid.export_to_csv_enabled && ! hide_csv_button
 
       if panel.nil?
         if render_csv_button
-          "<tr><td colspan=\"#{number_of_columns}\"></td><td>#{csv_export_icon}</td></tr>"
+          "<tr><td colspan=\"#{number_of_columns - 1}\"></td><td>#{csv_export_icon}</td><td>#{per_page_panel}</td></tr>"
         else
           ''
         end
       else
         if render_csv_button
-          "<tr><td colspan=\"#{number_of_columns}\">#{panel}</td><td>#{csv_export_icon}</td></tr>"
+          "<tr><td colspan=\"#{number_of_columns - 1}\">#{panel}</td><td>#{csv_export_icon}</td><td>#{per_page_panel}</td></tr>"
         else
-          "<tr><td colspan=\"#{number_of_columns + 1}\">#{panel}</td></tr>"
+          "<tr><td colspan=\"#{number_of_columns}\">#{panel}</td><td>#{per_page_panel}</td></tr>"
         end
       end
+    end
+
+    def per_page_panel
+      html = '<select class="custom-dropdown input-sm" id="grid_f_per_page" name="grid[f][per_page][]">'
+      5.times do |i|
+        html += '<option value="#{i}">#{i}</option>'
+      end
+      html + '</select>'
     end
 
     # Takes one argument and adds the  <caption></caption> tag to the table with the argument value as

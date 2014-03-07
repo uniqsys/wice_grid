@@ -61,6 +61,7 @@ class WiceGridProcessor
         if param && param != ''
           results.push(param)
     )
+    debugger
 
     res = @baseRequestForFilter
     if  results.length != 0
