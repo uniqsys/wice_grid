@@ -61,6 +61,7 @@ module Wice
             content_tag(:select,
               options_for_select(@custom_filter, params_for_select),
               select_options) +
+            #select_toggle.html_safe +
             '<i></i>' +
           '</label>' +
         '</div>'.html_safe
