@@ -62,7 +62,7 @@ module Wice
               options_for_select(@custom_filter, params_for_select),
               select_options) +
             select_toggle.html_safe +
-          '</div>'
+          '</div>' +
         '</div>'.html_safe
       end
 
