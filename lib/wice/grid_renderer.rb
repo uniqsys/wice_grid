@@ -117,7 +117,7 @@ module Wice
       end
     end
 
-    def per_page_panel
+    def per_page_panel(current_per_page)
       html = '<div class="table-nav-perpage">'
       html += "<div class='dataTables_info'>#{I18n.t(:per_page, scope: [:wice_grid])}</div>"
       html += '<span class="smart-form table-nav-select-wrap"><label class="select table-nav-select-label">'
