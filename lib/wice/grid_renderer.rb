@@ -118,6 +118,7 @@ module Wice
     end
 
     def per_page_panel
+      html = '<div class="table-nav-perpage">'
       html = "<div class='dataTables_info'>#{I18n.t(:per_page, scope: [:wice_grid])}</div>"
       html += '<span class="smart-form table-nav-select-wrap"><label class="select table-nav-select-label">'
       html += '<select class="custom-dropdown input-sm" id="grid_f_per_page" name="grid[f][per_page][]">'
@@ -126,7 +127,8 @@ module Wice
       end
       html += '</select>'
       html += '<i></i>'
-      html + '</label></span>'
+      html += '</label></span>'
+      html + '</div>'
     end
 
     # Takes one argument and adds the  <caption></caption> tag to the table with the argument value as
