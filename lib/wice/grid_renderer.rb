@@ -124,6 +124,7 @@ module Wice
         html += "<option value='#{i}'>#{i}</option>"
       end
       html += '</select>'
+      html += '<i></i>'
       html + '</label></span>'
     end
 
