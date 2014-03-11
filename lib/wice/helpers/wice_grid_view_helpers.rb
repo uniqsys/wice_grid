@@ -98,7 +98,8 @@ module Wice
         :show_filters                  => Defaults::SHOW_FILTER,
         :sorting_dependant_row_cycling => false,
         :html                          => {},
-        :upper_pagination_panel        => Defaults::SHOW_UPPER_PAGINATION_PANEL
+        :upper_pagination_panel        => Defaults::SHOW_UPPER_PAGINATION_PANEL,
+        :current_per_page              => Defaults::PER_PAGE
       }
 
       opts.assert_valid_keys(options.keys)
@@ -263,7 +264,7 @@ module Wice
 
       pagination_panel_content_html, pagination_panel_content_js = nil, nil
       if options[:upper_pagination_panel]
-        grid.output_buffer << rendering.pagination_panel(number_of_columns, options[:hide_csv_button]) do
+        grid.output_buffer << rendering.pagination_panel_with_per_page(number_of_columns, options[:hide_csv_button], options[:current_per_page]) do
           pagination_panel_content_html =
             pagination_panel_content(grid, options[:extra_request_parameters], options[:allow_showing_all_records])
           pagination_panel_content_html
@@ -377,7 +378,7 @@ module Wice
 
 
       grid.output_buffer << '</thead><tfoot>'
-      grid.output_buffer << rendering.pagination_panel_with_per_page(number_of_columns, options[:hide_csv_button]) do
+      grid.output_buffer << rendering.pagination_panel_with_per_page(number_of_columns, options[:hide_csv_button], options[:current_per_page]) do
         if pagination_panel_content_html
           pagination_panel_content_html
         else

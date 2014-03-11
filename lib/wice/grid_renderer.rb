@@ -97,22 +97,22 @@ module Wice
       )
     end
 
-    def pagination_panel_with_per_page(number_of_columns, hide_csv_button)  #:nodoc:
+    def pagination_panel_with_per_page(number_of_columns, hide_csv_button, current_per_page)  #:nodoc:
       panel = yield
 
       render_csv_button = @grid.export_to_csv_enabled && ! hide_csv_button
 
       if panel.nil?
         if render_csv_button
-          "<tr><td colspan=\"#{number_of_columns - 1}\"></td><td>#{csv_export_icon}</td><td>#{per_page_panel}</td></tr>"
+          "<tr><td colspan=\"#{number_of_columns - 1}\"></td><td>#{csv_export_icon}</td><td>#{per_page_panel(current_per_page)}</td></tr>"
         else
           ''
         end
       else
         if render_csv_button
-          "<tr><td colspan=\"#{number_of_columns - 1}\">#{panel}</td><td>#{csv_export_icon}</td><td>#{per_page_panel}</td></tr>"
+          "<tr><td colspan=\"#{number_of_columns - 1}\">#{panel}</td><td>#{csv_export_icon}</td><td>#{per_page_panel(current_per_page)}</td></tr>"
         else
-          "<tr><td colspan=\"#{number_of_columns}\">#{panel}</td><td class='action_column'>#{per_page_panel}</td></tr>"
+          "<tr><td colspan=\"#{number_of_columns}\">#{panel}</td><td class='action_column'>#{per_page_panel(current_per_page)}</td></tr>"
         end
       end
     end
@@ -123,7 +123,11 @@ module Wice
       html += '<span class="smart-form table-nav-select-wrap"><label class="select table-nav-select-label">'
       html += '<select class="custom-dropdown input-sm" id="grid_f_per_page" name="grid[f][per_page][]">'
       %w(10 25 50 100).each do |i|
-        html += "<option value='#{i}'>#{i}</option>"
+        if i == current_per_page.to_s
+          html += "<option value='#{i}' selected='selected'>#{i}</option>"
+        else
+          html += "<option value='#{i}'>#{i}</option>"
+        end
       end
       html += '</select>'
       html += '<i></i>'
