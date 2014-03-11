@@ -79,7 +79,7 @@ class WiceGridProcessor
 
   changeUrlByPerPage : (url, perPage) ->
     new_url = url.replace(/per_page=\d+/ig, '')
-      .replace(/page=\d+/ig,'page=1')
+      .replace(/[?|&]page=\d+/ig,'page=1')
     @appendToUrl(new_url, "per_page=#{perPage}")
 
   reset : ->
