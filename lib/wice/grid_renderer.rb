@@ -119,7 +119,7 @@ module Wice
 
     def per_page_panel
       html = '<div class="table-nav-perpage">'
-      html = "<div class='dataTables_info'>#{I18n.t(:per_page, scope: [:wice_grid])}</div>"
+      html += "<div class='dataTables_info'>#{I18n.t(:per_page, scope: [:wice_grid])}</div>"
       html += '<span class="smart-form table-nav-select-wrap"><label class="select table-nav-select-label">'
       html += '<select class="custom-dropdown input-sm" id="grid_f_per_page" name="grid[f][per_page][]">'
       %w(10 25 50 100).each do |i|
