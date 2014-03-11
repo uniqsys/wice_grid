@@ -14,6 +14,9 @@ class WiceGridProcessor
   process : (domIdToFocus)->
     window.location = @buildUrlWithParams(domIdToFocus)
 
+  processForPerPage : (perPage) ->
+    currentUrl = @buildUrlWithParams()
+    window.location = @changeUrlByPerPage(currentUrl, perPage)
 
   setProcessTimer : (domIdToFocus)->
 
@@ -63,8 +66,7 @@ class WiceGridProcessor
     )
 
 
-    res = @baseRequestForFilter #TODO write different logic
-    console.log(res)
+    res = @baseRequestForFilter
 
     if  results.length != 0
       allFilterParams = results.join('&')
@@ -75,7 +77,8 @@ class WiceGridProcessor
 
     res
 
-
+  changeUrlByPerPage : (url, perPage) ->
+    debugger
 
   reset : ->
     window.location = @baseRequestForFilter

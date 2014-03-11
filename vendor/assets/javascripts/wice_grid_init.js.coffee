@@ -182,6 +182,10 @@ setupAutoreloadsForInternalFilters = (wiceGridContainer, gridProcessor) ->
   $('select.auto-reload', wiceGridContainer).change ->
     gridProcessor.process()
 
+  $('#grid_f_per_page', wiceGridContainer).change (event) ->
+    perPage = $(event.target).find('option:selected').val()
+    gridProcessor.processForPerPage(perPage)
+
   $('input.auto-reload', wiceGridContainer).keyup (event)->
     if isKeySignificant event.which
       gridProcessor.setProcessTimer(this.id)
