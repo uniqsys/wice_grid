@@ -112,7 +112,7 @@ module Wice
         if render_csv_button
           "<tr><td colspan=\"#{number_of_columns - 1}\">#{panel}</td><td>#{csv_export_icon}</td><td>#{per_page_panel}</td></tr>"
         else
-          "<tr><td colspan=\"#{number_of_columns}\">#{panel}</td><td>#{per_page_panel}</td></tr>"
+          "<tr><td colspan=\"#{number_of_columns}\">#{panel}</td><td class='action_column'>#{per_page_panel}</td></tr>"
         end
       end
     end
