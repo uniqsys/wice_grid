@@ -78,9 +78,9 @@ class WiceGridProcessor
     res
 
   changeUrlByPerPage : (url, perPage) ->
-    url.replace(/per_page=\d+/ig, '')
+    new_url = url.replace(/per_page=\d+/ig, '')
       .replace(/page=\d+/ig,'page=1')
-      .concat("&per_page=#{perPage}")
+    @appendToUrl(new_url, "per_page=#{perPage}")
 
   reset : ->
     window.location = @baseRequestForFilter
