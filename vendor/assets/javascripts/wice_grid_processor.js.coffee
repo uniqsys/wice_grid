@@ -18,6 +18,10 @@ class WiceGridProcessor
     currentUrl = @buildUrlWithParams()
     window.location = @changeUrlByPerPage(currentUrl, perPage)
 
+  processForDateRange : (dateFrom, dateTo) ->
+    currentUrl = @buildUrlWithParams()
+    window.location = @changeUrlByDateRange(currentUrl, dateFrom, dateTo)
+
   setProcessTimer : (domIdToFocus)->
 
     if @timer
@@ -81,6 +85,15 @@ class WiceGridProcessor
     new_url = url.replace(/per_page=\d+/ig, '')
       .replace(/[?|&]page=\d+/ig,'page=1')
     @appendToUrl(new_url, "per_page=#{perPage}")
+
+  changeUrlByDateRange : (url, dateFrom, dateTo) ->
+    new_url = url.replace(/date_from=\d+/ig, '')
+      .replace(/date_to=\d+/ig, '')
+
+    @appendToUrl(
+      @appendToUrl(new_url, "date_to=#{dateTo}"),
+      "date_from=#{dateFrom}"
+    )
 
   reset : ->
     window.location = @baseRequestForFilter
