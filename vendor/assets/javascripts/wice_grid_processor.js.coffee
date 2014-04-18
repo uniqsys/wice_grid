@@ -87,8 +87,8 @@ class WiceGridProcessor
     @appendToUrl(new_url, "per_page=#{perPage}")
 
   changeUrlByDateRange : (url, dateFrom, dateTo) ->
-    new_url = url.replace(/date_from=\d+/ig, '')
-      .replace(/date_to=\d+/ig, '')
+    new_url = url.replace(/date_from=[\d+\.&]+/ig, '')
+      .replace(/date_to=[\d+\.&]+/ig, '')
 
     @appendToUrl(
       @appendToUrl(new_url, "date_to=#{dateTo}"),
