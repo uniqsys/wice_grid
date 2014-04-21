@@ -191,6 +191,11 @@ setupAutoreloadsForInternalFilters = (wiceGridContainer, gridProcessor) ->
     dateTo = $('input#date_to').val()
     gridProcessor.processForDateRange(dateFrom, dateTo)
 
+  $('#search').keyup (event) ->
+    if (event.keyCode == 13)
+      query = $(event.target).val()
+      gridProcessor.simpleQuery(query, 'search')
+
   $('input.auto-reload', wiceGridContainer).keyup (event)->
     if isKeySignificant event.which
       gridProcessor.setProcessTimer(this.id)

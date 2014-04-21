@@ -22,6 +22,10 @@ class WiceGridProcessor
     currentUrl = @buildUrlWithParams()
     window.location = @changeUrlByDateRange(currentUrl, dateFrom, dateTo)
 
+  simpleQuery : (val, paramsName) ->
+    currentUrl = @buildUrlWithParams()
+    window.location = @changeUrlBySimpleQuery(currentUrl, val, paramsName)
+
   setProcessTimer : (domIdToFocus)->
 
     if @timer
@@ -94,6 +98,11 @@ class WiceGridProcessor
       @appendToUrl(new_url, "date_to=#{dateTo}"),
       "date_from=#{dateFrom}"
     )
+
+  changeUrlBySimpleQuery : (url, val, paramsName) ->
+    regexp = new RegExp("#{paramsName}=([^&]+)", 'ig');
+    new_url = url.replace(regexp, '')
+    @appendToUrl(new_url, "#{paramsName}=#{val}")
 
   reset : ->
     window.location = @baseRequestForFilter
