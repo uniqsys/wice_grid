@@ -23,7 +23,7 @@ module Wice
 
         end
 
-        select_options = {:name => @parameter_name + '[]', :id => @dom_id, :class => 'custom-dropdown input-sm'}
+        select_options = {:name => @parameter_name + '[]', :id => @dom_id, :class => 'custom-dropdown'}
 
         if @turn_off_select_toggling
           select_toggle = ''
@@ -56,7 +56,7 @@ module Wice
 
         params_for_select = (params.is_a?(Hash) && params.empty?) ? [nil] : params
 
-        '<div class="custom-dropdown-container smart-form">' +
+        '<div class="custom-dropdown-container">' +
           '<label class="select">' +
             content_tag(:select,
               options_for_select(@custom_filter, params_for_select),
