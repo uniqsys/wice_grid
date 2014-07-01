@@ -117,6 +117,7 @@ module Wice
       opts.assert_valid_keys(@options.keys)
 
       @options.merge!(opts)
+      @options[:per_page] ||= Defaults::PER_PAGE
       @export_to_csv_enabled = @options[:enable_export_to_csv]
       @csv_file_name = @options[:csv_file_name]
       @csv_field_separator = @options[:csv_field_separator]
